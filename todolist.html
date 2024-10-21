@@ -6,27 +6,68 @@
     <title>Document</title>
 </head>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(189, 183, 184);
+        }
         body{
             font-family: Arial, Helvetica, sans-serif;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            
+            }
+         .todolist{
+            margin: 20px auto;
+            width: 50%;
+            /* border: 1px solid black; */
+            background-color: rgb(37, 36, 36);
+            min-height: 100dvh;
+            position: relative;
 
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+         }   
+         .todolist>h1{
+            height: 45px;
+            margin: px;
+            text-align: center;
+            background-color: plum;
+         }
+         input{
+            border: none;
+            outline: none;
+            height: 2rem;
+            margin: 10px;
+            width: 90%;
+            
+         }
+
+         .sbt-btn{
+            
+            color: white;
+            cursor: pointer;
+            height: 25px;
+            background-color: green;
+            width: 45px;
+            border: 0;
+            border-radius: 10px;
+         }
+         .dlt{
+            background-color: red;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            width: 55px;
+         }
         
     </style>
 <body>
-    <h1>My TODO List</h1>
-    <input type="text" placeholder="Enter new task" id="todo">
-    <button onclick="submitTodo()">submit</button>
-    <ul id="listt"></ul>
-    <button onclick="deleteFirst()">delete first</button>
-    <button onclick="deletelast()">delete last</button>
+    <div class="todolist">
+        <h1>My Todo List</h1>
+    <input type="text" placeholder="Enter new todo here" id="todo" autofocus>
+    <button onclick="submitTodo()" class="sbt-btn">submit</button>
+    <p id="listt"></p>
+    <button onclick="deleteFirst()" class="dlt">delete first</button>
+    <button onclick="deletelast()" class="dlt">delete last</button>
+    </div>
+    
     
 
 
