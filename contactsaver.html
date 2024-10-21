@@ -9,6 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+
         }
         button {
             padding: 8px 12px;
@@ -24,8 +25,39 @@
             align-items: center;
             gap: 10px;
             margin-top: 20px;
-        }
 
+        }
+        input{
+
+            padding: 10px;
+            font-size: 16px;
+            width: 30%;
+            box-sizing: border-box;
+        }
+        
+        
+        .btn1 {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: %;
+        }
+        .btn2{
+            padding: 5px;
+            background-color: black;
+        }
+        .btn3{
+            padding: 5px;
+            background-color: green;
+        }
+        #displayy {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
 
     </style>
 </head>
@@ -34,7 +66,7 @@
         <input type="text" id="contactName" placeholder="input name">
         <input type="number" name="" id="contactPhone" placeholder="input contact">
 
-        <button onclick="saveContact()">Save Contact</button>
+        <button onclick="saveContact()" class="btn1">Save Contact</button>
     </div>
     <div id="displayy">
 
@@ -61,7 +93,7 @@
                 let display = document.getElementById('display')
                 displayy.innerHTML = '';
             for (let i = 0; i < contactArray.length; i++){
-                displayy.innerHTML += `${i + 1}. ${contactArray[i].name} - ${contactArray[i].phone} <button onclick="deleteItem(${i})"style="cursor:pointer"> 🗑️ </button> <button onclick="editItem(${i})"style="cursor:pointer">edit</button>`
+                displayy.innerHTML += `${i + 1}. ${contactArray[i].name} - ${contactArray[i].phone} <button class="btn2" onclick="deleteItem(${i})"style="cursor:pointer"> 🗑️ </button> <button class="btn3" onclick="editItem(${i})"style="cursor:pointer">edit</button> <br>`
 
             }
         }
@@ -85,6 +117,15 @@
             
         
         }
+    }
+
+    function deleteItem(i){
+        if(confirm('are you sure you want to delete contact?') == true){
+                contactArray.shift()
+                displayycontact()
+                
+            }
+
     }
     </script>
 </body>
