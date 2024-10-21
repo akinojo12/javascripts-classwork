@@ -13,7 +13,7 @@
         button {
             padding: 8px 12px;
             color: white;
-            background-color: green;
+            background-color:red;
             border: none;
             border-radius: 25px;
         
@@ -58,13 +58,14 @@
 
             }
             function displayycontact () {
-                displayy.innerHTML = ``;
+                let display = document.getElementById('display')
+                displayy.innerHTML = '';
             for (let i = 0; i < contactArray.length; i++){
-                displayy.innerHTML += `${i + 1}. ${contactArray[i].name} ${contactArray[i].phone}<button onclick="deleteItem(${i})"style="cursor:pointer"> 🗑️ </button> <button onclick="editItem(${i})"style="cursor:pointer">edit</button>`
+                displayy.innerHTML += `${i + 1}. ${contactArray[i].name} - ${contactArray[i].phone} <button onclick="deleteItem(${i})"style="cursor:pointer"> 🗑️ </button> <button onclick="editItem(${i})"style="cursor:pointer">edit</button>`
 
             }
-                
         }
+        
                        
 
         function deleteItem(i) {
@@ -73,12 +74,16 @@
         }
 
         function editItem(i) {
-            let newContact = prompt("this is the todo you want to edit", contactArray[i].name)
-          if(newContact !== '' && newContact !== null){
-            contactArray.splice(i, 1, newContact)
+            let newName = prompt("enter new name", contactArray[i].name)
+            let newPhone = prompt("enter the new phone number", contactArray[i].phone);
+
+          if(newName !== '' && newPhone !== ''){
+            contactArray[i].name = newName;
+            contactArray[i].phone = newPhone
             displayycontact()
           }else{
-            displayycontact()
+            
+        
         }
     }
     </script>
