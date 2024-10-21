@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea  id="character" cols="30" rows="10" onkeyup="checkWords()"></textarea>
+    <p><code id="num">0</code>words</p>
+    <script>
+
+        var namee = "Joshua"
+        
+        console.log(namee.length);
+        console.log(namee.indexOf('o'));
+        console.log(namee.charAt(4));
+
+
+        function checkWords(){
+            let characters = character.value
+        console.log(characters.length);
+        console.log(characters.trim('').split('').length);
+        num.innerHTML = characters.trim('').split('').length;
+        
+        }
+       
+    </script>
+</body>
+</html>

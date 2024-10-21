@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 8px 12px;
+            color: white;
+            background-color: green;
+            border: none;
+            border-radius: 25px;
+        
+        }
+        .cont{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <input type="text" id="contactName" placeholder="input name">
+        <input type="number" name="" id="contactPhone" placeholder="input contact">
+
+        <button onclick="saveContact()">Save Contact</button>
+    </div>
+    <div id="displayy">
+
+    </div>
+    <script>
+
+        let namee = document.getElementById('contactName').value;
+        let phone = document.getElementById('contactPhone').value;
+        let contact = {name: namee, phone:phone}
+
+
+        let contactArray = []
+        function saveContact() {
+        let namee = document.getElementById('contactName').value;
+        let phone = document.getElementById('contactPhone').value;
+        let contact = {name: namee, phone:phone}
+        contactArray.push(contact);
+            console.log(contactArray);
+         
+            displayycontact()
+
+            }
+            function displayycontact () {
+                displayy.innerHTML = ``;
+            for (let i = 0; i < contactArray.length; i++){
+                displayy.innerHTML += `${i + 1}. ${contactArray[i].name} ${contactArray[i].phone}<button onclick="deleteItem(${i})"style="cursor:pointer"> 🗑️ </button> <button onclick="editItem(${i})"style="cursor:pointer">edit</button>`
+
+            }
+                
+        }
+                       
+
+        function deleteItem(i) {
+            contactArray.splice (i, 1)
+            displayycontact()
+        }
+
+        function editItem(i) {
+            let newContact = prompt("this is the todo you want to edit", contactArray[i].name)
+          if(newContact !== '' && newContact !== null){
+            contactArray.splice(i, 1, newContact)
+            displayycontact()
+          }else{
+            displayycontact()
+        }
+    }
+    </script>
+</body>
+</html>

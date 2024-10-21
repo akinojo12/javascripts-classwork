@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            
+
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+    </style>
+<body>
+    <h1>My TODO List</h1>
+    <input type="text" placeholder="Enter new task" id="todo">
+    <button onclick="submitTodo()">submit</button>
+    <ul id="listt"></ul>
+    <button onclick="deleteFirst()">delete first</button>
+    <button onclick="deletelast()">delete last</button>
+    
+
+
+
+
+
+    <script>
+        let todoArray = [];
+
+        function submitTodo() {
+            if (todo.value == "") {
+                
+            } else {
+                todoArray.push(todo.value)
+                console.log(todoArray);
+        
+                listt.innerHTML = '';
+                for (let i = 0; i < todoArray.length; i++) {
+                    listt.innerHTML += `${i + 1}. ${todoArray[i]}<br/>`;
+                    
+                }
+            }
+
+            todo.value=""
+        }
+
+        function displaytodo() {
+            listt.innerHTML = ''
+            for (let i = 0; i < todoArray.length; i++) {
+              listt.innerHTML += `${i + 1}. ${todoArray[i]}<button onclick="deleteitem(${i})"style="cursor:pointer"> 🗑️ </button> <button onclick="editItem(${i})" style="cursor:pointer">edit</button><br/>`;
+                
+            }
+        }
+
+        function deleteFirst() {
+            if(confirm('are you sure you want to delete first item') == true){
+                todoArray.shift()
+                displaytodo()
+                console.log(todoArray);
+            } else{
+                displaytodo()
+            }
+           
+            
+        }
+
+        function deletelast() {
+            if(confirm('are you sure you want to delete last item') == true) {
+                todoArray.pop()
+                displaytodo()
+            } else {
+                dislaytodo()
+            }        
+        }
+
+        function deleteitem(i){
+            todoArray.splice(i, 1)
+            displaytodo()
+        }
+        
+        function editItem(i){
+          let newTodo = prompt("this is the todo you want to edit", todoArray[i])
+          if(newTodo !== '' && newTodo !== null){
+            todoArray.splice(i, 1, newTodo)
+            displaytodo()
+          }else{
+            displaytodo()
+          }
+        }
+    </script>
+
+</body>
+</html>

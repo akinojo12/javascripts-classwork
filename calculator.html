@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+        }
+
+        #display {
+            width: 100%;
+            height: 50px;
+            background-color: #444;
+            color: white;
+            text-align: right;
+            font-size: 2em;
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.5em;
+            border: none;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+        
+
+        
+        .operator {
+            background-color: #ff8c00;
+
+        }
+        .operator:hover{
+            background-color: #ff9933;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('*')">*</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="calculate('=')">=</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+    <script>
+        function display(value) {
+            document.getElementById('display').value += value;
+        } 
+        
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } 
+            catch(e) {
+            document.getElementById('display').value = 'Error';
+        }
+        }
+        
+         function clearDisplay() {
+            document.getElementById('display').value = '';
+         }
+    </script> -->
+
+
+
+
+
+    <input type="number" name="" id="first" placeholder="first number" value="">
+
+    <select name="ele" id="selectt" title="select">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="x">x</option>
+        <option value="/">/</option>
+    </select>
+
+    <input type="number" name="" id="second" placeholder="second number" value="">
+
+    <button onclick="calculate()">calculate</button>
+
+    <code id="result"></code>
+
+    <script>
+        function calculate() {
+            let firstNum = Number(document.getElementById('first').value);
+            let secondNum = Number(document.getElementById('second').value);
+
+        if (selectt.value == "+") {
+            result.innerHTML = firstNum + secondNum;
+        } else if (selectt.value == "-"){
+            result.innerHTML = firstNum - secondNum;
+        } else if(selectt.value == "x") {
+            result.innerHTML = firstNum * secondNum;
+        } else if (selectt.value == "/") {
+            result.innerHTML = firstNum / secondNum; 
+            if ( seconfNum == 0) {
+                result.innerHTML = "math error"
+            }
+        }
+        // console.log(firstNum)
+        // console.log(secondNum);
+        }
+                   
+
+    </script>
+
+
+</body>
+
+</html>
