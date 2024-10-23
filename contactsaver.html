@@ -43,7 +43,7 @@
             font-size: 16px;
             border: none;
             cursor: pointer;
-            width: %;
+            
         }
         .btn2{
             padding: 5px;
@@ -94,15 +94,19 @@
                 displayy.innerHTML = '';
             for (let i = 0; i < contactArray.length; i++){
                 displayy.innerHTML += `${i + 1}. ${contactArray[i].name} - ${contactArray[i].phone} <button class="btn2" onclick="deleteItem(${i})"style="cursor:pointer"> 🗑️ </button> <button class="btn3" onclick="editItem(${i})"style="cursor:pointer">edit</button> <br>`
-
+                localContact()
             }
         }
         
-                       
+           function localContact(){
+                localcon = JSON.stringify(contactArray)
+                localStorage.setItem('contact', localcon)
+           }            
 
         function deleteItem(i) {
             contactArray.splice (i, 1)
             displayycontact()
+            localContact()
         }
 
         function editItem(i) {
@@ -113,9 +117,10 @@
             contactArray[i].name = newName;
             contactArray[i].phone = newPhone
             displayycontact()
-          }else{
+            localContact()
+          }
+          else{
             
-        
         }
     }
 
@@ -123,6 +128,7 @@
         if(confirm('are you sure you want to delete contact?') == true){
                 contactArray.shift()
                 displayycontact()
+                localContact()
                 
             }
 
