@@ -82,16 +82,25 @@
                 
             } else {
                 todoArray.push(todo.value)
-                console.log(todoArray);
-        
-                listt.innerHTML = '';
-                for (let i = 0; i < todoArray.length; i++) {
-                    listt.innerHTML += `${i + 1}. ${todoArray[i]}<br/>`;
-                    
+                
+                displaytodo()
+                updateLocal()
+                allTodo()
                 }
             }
 
             todo.value=""
+        
+
+        function updateLocal(){
+            let localTodo = JSON.stringify(todoArray)
+            localStorage.setItem('todo', localTodo)
+        }
+            
+
+        function allTodo(){
+            let localTodo = JSON.stringify(todoArray)
+            localStorage.setItem('todo1', localTodo)
         }
 
         function displaytodo() {
@@ -106,7 +115,7 @@
             if(confirm('are you sure you want to delete first item') == true){
                 todoArray.shift()
                 displaytodo()
-                console.log(todoArray);
+                updateLocal()
             } else{
                 displaytodo()
             }
@@ -118,13 +127,16 @@
             if(confirm('are you sure you want to delete last item') == true) {
                 todoArray.pop()
                 displaytodo()
+                updateLocal()
             } else {
+                
                 dislaytodo()
             }        
         }
 
         function deleteitem(i){
             todoArray.splice(i, 1)
+            updateLocal()
             displaytodo()
         }
         
@@ -133,6 +145,7 @@
           if(newTodo !== '' && newTodo !== null){
             todoArray.splice(i, 1, newTodo)
             displaytodo()
+            updateLocal()
           }else{
             displaytodo()
           }
