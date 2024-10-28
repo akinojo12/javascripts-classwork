@@ -57,7 +57,7 @@
          }
         
     </style>
-<body>
+<body onload="getTodo()">
     <div class="todolist">
         <h1>My Todo List</h1>
     <input type="text" placeholder="Enter new todo here" id="todo" autofocus>
@@ -70,7 +70,6 @@
 
     <script>
         let todoArray = [];
-
         function submitTodo() {
             if (todo.value == "") {
                 
@@ -83,8 +82,19 @@
                 }
             }
 
-            todo.value=""
+            todo.value = ""
         
+            function getTodo(){
+                let localtod = localStorage.getItem('todo');
+                if (localtod) {
+                    todoArray = JSON.parse(localtod)
+                    displaytodo()
+                }else{
+                todoArray = []
+                }
+            }
+                
+            
 
         function updateLocal(){
             let localTodo = JSON.stringify(todoArray)
